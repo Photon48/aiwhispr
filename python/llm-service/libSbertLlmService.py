@@ -39,11 +39,11 @@ class createLlmService(baseLlmService):
          logging.debug("LLM Service is setting text_chunk_size=%d as default",self.text_chunk_size)
    
    def testConnect(self):   
-      mymodel = self.model_service.SentenceTransformer(self.model_name)
+      mymodel = self.model_service.SentenceTransformer(self.model_name, modules=None, device='cpu')
       myembedding= mymodel.encode("Test Connection for SBert")
    
    def connect(self):
-      self.model = self.model_service.SentenceTransformer(self.model_name)
+      self.model = self.model_service.SentenceTransformer(self.model_name, modules=None, device='cpu')
 
    def encode(self, in_text:str):
       vector_embedding =  self.model.encode(in_text)
